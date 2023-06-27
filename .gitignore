@@ -476,13 +476,14 @@ yarn-error.log
 *.sublime-workspace
 
 # Miscellaneous
-/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
 testem.log
 /typings
+.angular/*
+.angular*
 
 # System files
 .DS_Store
