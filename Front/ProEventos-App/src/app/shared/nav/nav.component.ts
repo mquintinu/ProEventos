@@ -15,8 +15,10 @@ export class NavComponent implements OnInit {
   }
 
   showMenu(): boolean{
-
-    return this.router.url != '/user/login';
+    if (this.router.url != '/user/login' && this.router.url != '/user/registration'){
+      return true;
+    }
+    return false;
   }
 
 }
