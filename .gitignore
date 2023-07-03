@@ -493,3 +493,9 @@ Thumbs.db
 *.db
 *.db-shm
 *.db-wal
+
+# Outros
+.vscode/launch.json
+Back/src/ProEventos.API/ProEventos.db
+.vscode/tasks.json
+Back/src/ProEventos.API/ProEventos.db
