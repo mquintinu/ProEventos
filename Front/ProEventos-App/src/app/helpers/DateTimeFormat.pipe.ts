@@ -8,7 +8,10 @@ import { Constants } from '../util/constants';
 export class DateTimeFormatPipe extends DatePipe implements PipeTransform {
 
   override transform(value: any, args?: any): any {
-    return super.transform(value, Constants.DATE_TIME_FMT);
+    const dateValue = new Date(value);
+    if (!isNaN(dateValue.getTime())) {
+      return super.transform(dateValue, Constants.DATE_TIME_FMT);
+    }
+    return value;
   }
-
 }
