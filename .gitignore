@@ -499,3 +499,6 @@ Thumbs.db
 Back/src/ProEventos.API/ProEventos.db
 .vscode/tasks.json
 Back/src/ProEventos.API/ProEventos.db
+
+# Imagens
+Resources/

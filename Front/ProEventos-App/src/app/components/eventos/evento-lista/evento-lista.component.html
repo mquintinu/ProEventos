@@ -48,7 +48,8 @@
       <td class="d-none d-md-table-cell">
         <img [collapse]="exibirImagem" [isAnimated]="true" [style.width.px]="larguraImagem"
         [style.margin.px]="margemImagem"
-        src="/assets/{{item.imagemURL}}" >
+        [src]="mostraImagem(item.imagemURL)"
+        >
       </td>
       <td>{{item.id}}</td>
       <td>{{item.tema}}</td>
