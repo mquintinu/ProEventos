@@ -2,7 +2,7 @@ namespace ProEventos.Domain.Enum
 {
     public enum Funcao
     {
-        NAO_INFORMADO,
+        NAOINFORMADO,
         PARTICIPANTE,
         PALESTRANTE
     }

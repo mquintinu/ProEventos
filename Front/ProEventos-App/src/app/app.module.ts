@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,12 +36,15 @@ import { RegistrationComponent } from './components/user/registration/registrati
 import { LoteService } from './services/lote.service';
 
 import { NgxCurrencyModule } from 'ngx-currency';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { HomeComponent } from './components/home/home.component';
 
 defineLocale('pt-br', ptBrLocale);
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     EventosComponent,
     PalestrantesComponent,
     ContatosComponent,
@@ -77,8 +80,9 @@ defineLocale('pt-br', ptBrLocale);
     BsDatepickerModule.forRoot(),
     NgxCurrencyModule
   ],
-  providers: [EventoService, LoteService],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [EventoService, LoteService,
+             { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+             ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

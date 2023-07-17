@@ -19,7 +19,7 @@ export class EventoListaComponent {
   public eventosFiltrados: Evento[] = [];
   public larguraImagem = 150;
   public margemImagem = 2;
-  public exibirImagem = true;
+  public exibirImagem = false;
   private _filtroListado = '';
   public eventoId = 0;
 

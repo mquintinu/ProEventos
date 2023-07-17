@@ -44,7 +44,7 @@ namespace ProEventos.Application
             };
         }
 
-        public async Task<UserDTO> CreateAccountAsync(UserDTO userDTO)
+        public async Task<UserUpdateDTO> CreateAccountAsync(UserDTO userDTO)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace ProEventos.Application
 
                 if (result.Succeeded)
                 {
-                    var userToReturn = _mapper.Map<UserDTO>(user);
+                    var userToReturn = _mapper.Map<UserUpdateDTO>(user);
                     return userToReturn;
                 }
 
@@ -85,14 +85,17 @@ namespace ProEventos.Application
         {
             try
             {
-                 var user = await _userPersist.GetUserByUserNameAsync(userUpdateDTO.UserName);
-                 if (user == null) return null;
+                var user = await _userPersist.GetUserByUserNameAsync(userUpdateDTO.UserName);
+                if (user == null) return null;
 
-                 _mapper.Map(userUpdateDTO, user);
+                userUpdateDTO.Id = user.Id;
 
-                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                 var result = await _userManager.ResetPasswordAsync(user, token, userUpdateDTO.Password);
+                _mapper.Map(userUpdateDTO, user);
 
+                if (userUpdateDTO.Password != null) {
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    await _userManager.ResetPasswordAsync(user, token, userUpdateDTO.Password);
+                }
                  _userPersist.Update<User>(user);
 
                  if (await _userPersist.SaveChangesAsync())
