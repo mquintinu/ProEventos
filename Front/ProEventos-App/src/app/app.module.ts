@@ -24,6 +24,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 
 import { EventoService } from './services/evento.service';
@@ -35,7 +37,6 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { LoteService } from './services/lote.service';
 
-import { NgxCurrencyModule } from 'ngx-currency';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { HomeComponent } from './components/home/home.component';
 
@@ -78,7 +79,8 @@ defineLocale('pt-br', ptBrLocale);
     NgxSpinnerModule,
     BsDropdownModule,
     BsDatepickerModule.forRoot(),
-    NgxCurrencyModule
+    NgxCurrencyModule,
+    PaginationModule.forRoot()
   ],
   providers: [EventoService, LoteService,
              { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

@@ -5,6 +5,7 @@ using ProEventos.Application.Contratos;
 using ProEventos.Application.DTOs;
 using ProEventos.Domain;
 using ProEventos.Persistence.Contratos;
+using ProEventos.Persistence.Models;
 
 namespace ProEventos.Application
 {
@@ -90,33 +91,21 @@ namespace ProEventos.Application
             }
         }
 
-        public async Task<EventoDTO[]> GetAllEventosAsync(int userId, bool includePalestrantes = false)
+        public async  Task<PageList<EventoDTO>> GetAllEventosAsync(int userId, PageParams pageParams, bool includePalestrantes = false)
         {
             try
             {
-                 var eventos = await _eventoPersist.GetAllEventosAsync(userId, includePalestrantes);
+                 var eventos = await _eventoPersist.GetAllEventosAsync(userId, pageParams, includePalestrantes);
                  if (eventos == null) return null;
                     
-                 var resultado = _mapper.Map<EventoDTO[]>(eventos);
+                 var resultado = _mapper.Map<PageList<EventoDTO>>(eventos);
+
+                 resultado.CurrentPage = eventos.CurrentPage;
+                 resultado.TotalPages = eventos.TotalPages;
+                 resultado.PageSize = eventos.PageSize;
+                 resultado.TotalCount = eventos.TotalCount;
 
                  return resultado;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public async Task<EventoDTO[]> GetAllEventosByTemaAsync(int userId, string tema, bool includePalestrantes = false)
-        {
-            try
-            {
-                var eventos = await _eventoPersist.GetAllEventosByTemaAsync(userId, tema);
-                if (eventos == null) return null;
-
-                var resultado = _mapper.Map<EventoDTO[]>(eventos);
-
-                return resultado;
             }
             catch (Exception ex)
             {

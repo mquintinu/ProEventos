@@ -12,7 +12,7 @@
         <input type="text"
         class="form-control"
         placeholder="Filtrar por tema ou local"
-        [(ngModel)]="filtroLista"
+        (input)="filtrarEventos($event.target)"
         >
       </div>
     </div>
@@ -44,7 +44,7 @@
     </tr>
   </thead>
   <tbody *ngIf="eventos && eventos.length">
-    <tr *ngFor="let item of eventosFiltrados" (click)="detalheEvento(item.id)" style="cursor: pointer;">
+    <tr *ngFor="let item of eventos" (click)="detalheEvento(item.id)" style="cursor: pointer;">
       <td class="d-none d-md-table-cell">
         <img [collapse]="exibirImagem" [isAnimated]="true" [style.width.px]="larguraImagem"
         [style.margin.px]="margemImagem"
@@ -59,19 +59,38 @@
       <td class="d-none d-md-table-cell">{{item.lotes[0]?.nome | uppercase }}</td>
       <td>
         <button type="button" class="btn btn-danger btn-sl" data-bs-toggle="tooltip" (click)="openModal($event, template, item.id)" title="Excluir" >
-        <i class ="fa fa-trash"></i>
-      </button>
-    </td>
-  </tr>
-</tbody>
-<tfoot *ngIf="!eventos.length">
-  <tr>
-    <td colspan="8">
-      <h4>Nenhum evento encontrado!</h4>
-    </td>
-  </tr>
-</tfoot>
+          <i class ="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!eventos.length">
+    <tr>
+      <td colspan="8">
+        <h4>Nenhum evento encontrado!</h4>
+      </td>
+    </tr>
+  </tfoot>
 </table>
+
+<div class="d-flex justify-content-center">
+  <pagination
+    [boundaryLinks]="true"
+
+    [totalItems]="pagination.totalItems"
+    [itemsPerPage]="pagination.itemsPerPage"
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="pageChanged($event)"
+
+
+
+    pageBtnClass="btn"
+    previousText="&lsaquo;" nextText="&rsaquo;"
+    [align]="true"
+    firstText="&laquo;" lastText="&raquo;">
+</pagination>
+</div>
+
 
 </div>
 <ng-template #template>
