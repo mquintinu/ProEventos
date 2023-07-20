@@ -49,14 +49,14 @@
 					<select class="form-select" formControlName="titulo"
               [ngClass]="{'is-invalid': f.titulo.errors && f.titulo.touched}">
             <option selected="{{f.titulo.value}}">{{f.titulo.value}}</option>
-            <option value="NaoInformado">Não Quero</option>
+            <option value="Nao_Informado">Não Quero</option>
 						<option value="Tecnologo">Tecnólogo(a)</option>
 						<option value="Bacharel">Bacharel</option>
 						<option value="Especialista">Especialista</option>
-						<option value="PosGraduado">Pós Graduado(a)</option>
+						<option value="Pos_Graduado">Pós Graduado(a)</option>
 						<option value="Mestrado">Mestre</option>
 						<option value="Doutorado">Doutor(a)</option>
-						<option value="PosDoutorado">Pós Doc</option>
+						<option value="Pos_Doutorado">Pós Doc</option>
 					</select>
           <div *ngIf="f.titulo.errors?.required" class="invalid-feedback"> Título é obrigatório!</div>
 				</div>
