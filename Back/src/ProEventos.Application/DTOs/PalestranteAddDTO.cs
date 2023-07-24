@@ -2,13 +2,10 @@ using System.Collections.Generic;
 
 namespace ProEventos.Application.DTOs
 {
-    public class PalestranteDTO
+    public class PalestranteAddDTO
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public UserUpdateDTO User { get; set; }
         public string MiniCurriculo { get; set; }
-        public IEnumerable<RedeSocialDTO> RedeSociais { get; set; }
-        public IEnumerable<EventoDTO> Eventos { get; set; }
     }
 }
