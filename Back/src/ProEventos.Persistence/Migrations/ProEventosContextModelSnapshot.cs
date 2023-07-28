@@ -190,7 +190,7 @@ namespace ProEventos.Persistence.Migrations
                     b.Property<int>("Funcao")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ImagemPerfil")
+                    b.Property<string>("ImagemURL")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")

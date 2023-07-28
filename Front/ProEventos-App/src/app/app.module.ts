@@ -6,10 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { PalestrantesComponent } from './components/palestrantes/palestrantes.component';
+import { PalestranteListaComponent } from './components/palestrantes/palestrante-lista/palestrante-lista.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { ContatosComponent } from './components/contatos/contatos.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
+import { PerfilDetalheComponent } from './components/user/perfil/perfil-detalhe/perfil-detalhe.component';
 import { TituloComponent } from './shared/titulo/titulo.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +28,7 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 import { EventoService } from './services/evento.service';
@@ -39,6 +42,8 @@ import { LoteService } from './services/lote.service';
 
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { HomeComponent } from './components/home/home.component';
+import { PalestranteDetalheComponent } from './components/palestrantes/palestrante-detalhe/palestrante-detalhe.component';
+import { RedesSociaisComponent } from './components/redesSociais/redesSociais.component';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -48,9 +53,13 @@ defineLocale('pt-br', ptBrLocale);
     HomeComponent,
     EventosComponent,
     PalestrantesComponent,
+    PalestranteListaComponent,
+    PalestranteDetalheComponent,
+    RedesSociaisComponent,
     ContatosComponent,
     DashboardComponent,
     PerfilComponent,
+    PerfilDetalheComponent,
     TituloComponent,
     NavComponent,
     DateTimeFormatPipe,
@@ -80,7 +89,8 @@ defineLocale('pt-br', ptBrLocale);
     BsDropdownModule,
     BsDatepickerModule.forRoot(),
     NgxCurrencyModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [EventoService, LoteService,
              { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

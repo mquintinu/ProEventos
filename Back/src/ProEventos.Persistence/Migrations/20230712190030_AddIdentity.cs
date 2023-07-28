@@ -33,7 +33,7 @@ namespace ProEventos.Persistence.Migrations
                     Titulo = table.Column<int>(type: "INTEGER", nullable: false),
                     Descricao = table.Column<string>(type: "TEXT", nullable: true),
                     Funcao = table.Column<int>(type: "INTEGER", nullable: false),
-                    ImagemPerfil = table.Column<string>(type: "TEXT", nullable: true),
+                    ImagemURL = table.Column<string>(type: "TEXT", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),

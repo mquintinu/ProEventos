@@ -159,9 +159,22 @@
       </div>
     </div>
   </div>
-  <br>
 
-</div>
+    <div class="card rounded shadow-sm mt-3" *ngIf="modoEditar">
+      <div class="p-3">
+        <div class="d-flex border-bottom">
+          <h2 class="me-auto">
+            Redes Sociais do Evento
+          </h2>
+          <h2>
+            <i class="fa-brands fa-square-facebook me-2"></i>
+          </h2>
+        </div>
+        <app-redesSociais [eventoId]="eventoId"></app-redesSociais>
+      </div>
+    </div>
+
+  </div>
 
 <div class="col-md-4" *ngIf="modoEditar">
   <div [formGroup]="form" class="card-evento-view shadow-sm">
@@ -206,23 +219,11 @@
             <a href="">
 
               <i class=""></i>
-
             </a>
-
           </div>
-
-          <!--div class="col-md-4 d-flex justify-content-center">
-
-            <a href="#" class="btn btn-outline-primary">Participar</a>
-
-          </div-->
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
 </div>
